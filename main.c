@@ -22,5 +22,7 @@ int main() {
         printf("\n");
     }
     displayMap(map);
+    t_node noeud;
+
     return 0;
 }

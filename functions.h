@@ -1,3 +1,7 @@
+#ifndef UNTITLED1_FUNCTIONS_H
+#define UNTITLED1_FUNCTIONS_H
+#include <stdlib.h>
+#include "loc.h"
 typedef struct s_cell{
     int value; //valeur de la cellule
     int next; //adresse de la cellule suivante
@@ -20,7 +24,8 @@ typedef struct t_tree{
     t_node root;
 };
 
-#ifndef UNTITLED1_FUNCTIONS_H
-#define UNTITLED1_FUNCTIONS_H
+
+t_node Create_abr(int );
+
 
 #endif //UNTITLED1_FUNCTIONS_H
