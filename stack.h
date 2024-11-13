@@ -4,7 +4,7 @@
 
 #ifndef UNTITLED1_STACK_H
 #define UNTITLED1_STACK_H
-
+#include "loc.h"
 /**
  * @brief Structure for the stack of integers
  */

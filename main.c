@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "map.h"
+#include "loc.h"
+#include "functions.h"
 
 int main() {
     t_map map = createMapFromFile("..\\maps\\example1.map");
@@ -22,7 +24,6 @@ int main() {
         printf("\n");
     }
     displayMap(map);
-    t_node noeud;
 
     return 0;
 }

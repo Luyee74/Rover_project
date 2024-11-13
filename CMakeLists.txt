@@ -15,4 +15,5 @@ add_executable(untitled1 main.c
         stack.c
         stack.h
         functions.h
-        functions.c)
+        functions.c
+        main.c)
