@@ -128,30 +128,6 @@ untitled1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled1.dir\build.make CMakeFiles/untitled1.dir/build
 .PHONY : untitled1/fast
 
-functions.obj: functions.c.obj
-.PHONY : functions.obj
-
-# target to build an object file
-functions.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled1.dir\build.make CMakeFiles/untitled1.dir/functions.c.obj
-.PHONY : functions.c.obj
-
-functions.i: functions.c.i
-.PHONY : functions.i
-
-# target to preprocess a source file
-functions.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled1.dir\build.make CMakeFiles/untitled1.dir/functions.c.i
-.PHONY : functions.c.i
-
-functions.s: functions.c.s
-.PHONY : functions.s
-
-# target to generate assembly for a file
-functions.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled1.dir\build.make CMakeFiles/untitled1.dir/functions.c.s
-.PHONY : functions.c.s
-
 loc.obj: loc.c.obj
 .PHONY : loc.obj
 
@@ -296,6 +272,30 @@ stack.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled1.dir\build.make CMakeFiles/untitled1.dir/stack.c.s
 .PHONY : stack.c.s
 
+tree.obj: tree.c.obj
+.PHONY : tree.obj
+
+# target to build an object file
+tree.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled1.dir\build.make CMakeFiles/untitled1.dir/tree.c.obj
+.PHONY : tree.c.obj
+
+tree.i: tree.c.i
+.PHONY : tree.i
+
+# target to preprocess a source file
+tree.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled1.dir\build.make CMakeFiles/untitled1.dir/tree.c.i
+.PHONY : tree.c.i
+
+tree.s: tree.c.s
+.PHONY : tree.s
+
+# target to generate assembly for a file
+tree.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled1.dir\build.make CMakeFiles/untitled1.dir/tree.c.s
+.PHONY : tree.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -305,9 +305,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... untitled1
-	@echo ... functions.obj
-	@echo ... functions.i
-	@echo ... functions.s
 	@echo ... loc.obj
 	@echo ... loc.i
 	@echo ... loc.s
@@ -326,6 +323,9 @@ help:
 	@echo ... stack.obj
 	@echo ... stack.i
 	@echo ... stack.s
+	@echo ... tree.obj
+	@echo ... tree.i
+	@echo ... tree.s
 .PHONY : help
 
 

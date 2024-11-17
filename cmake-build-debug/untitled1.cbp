@@ -76,12 +76,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/tonyv/OneDrive/Documents/GitHub/Rover_project/Rover_project/functions.c">
-			<Option target="untitled1"/>
-		</Unit>
-		<Unit filename="C:/Users/tonyv/OneDrive/Documents/GitHub/Rover_project/Rover_project/functions.h">
-			<Option target="untitled1"/>
-		</Unit>
 		<Unit filename="C:/Users/tonyv/OneDrive/Documents/GitHub/Rover_project/Rover_project/loc.c">
 			<Option target="untitled1"/>
 		</Unit>
@@ -113,6 +107,12 @@
 			<Option target="untitled1"/>
 		</Unit>
 		<Unit filename="C:/Users/tonyv/OneDrive/Documents/GitHub/Rover_project/Rover_project/stack.h">
+			<Option target="untitled1"/>
+		</Unit>
+		<Unit filename="C:/Users/tonyv/OneDrive/Documents/GitHub/Rover_project/Rover_project/tree.c">
+			<Option target="untitled1"/>
+		</Unit>
+		<Unit filename="C:/Users/tonyv/OneDrive/Documents/GitHub/Rover_project/Rover_project/tree.h">
 			<Option target="untitled1"/>
 		</Unit>
 		<Unit filename="C:/Users/tonyv/OneDrive/Documents/GitHub/Rover_project/Rover_project/CMakeLists.txt">

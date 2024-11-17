@@ -152,19 +152,19 @@ CMakeFiles/untitled1.dir/stack.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/untitled1.dir/stack.c.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\tonyv\OneDrive\Documents\GitHub\Rover_project\Rover_project\stack.c -o CMakeFiles\untitled1.dir\stack.c.s
 
-CMakeFiles/untitled1.dir/functions.c.obj: CMakeFiles/untitled1.dir/flags.make
-CMakeFiles/untitled1.dir/functions.c.obj: C:/Users/tonyv/OneDrive/Documents/GitHub/Rover_project/Rover_project/functions.c
-CMakeFiles/untitled1.dir/functions.c.obj: CMakeFiles/untitled1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tonyv\OneDrive\Documents\GitHub\Rover_project\Rover_project\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/untitled1.dir/functions.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/untitled1.dir/functions.c.obj -MF CMakeFiles\untitled1.dir\functions.c.obj.d -o CMakeFiles\untitled1.dir\functions.c.obj -c C:\Users\tonyv\OneDrive\Documents\GitHub\Rover_project\Rover_project\functions.c
+CMakeFiles/untitled1.dir/tree.c.obj: CMakeFiles/untitled1.dir/flags.make
+CMakeFiles/untitled1.dir/tree.c.obj: C:/Users/tonyv/OneDrive/Documents/GitHub/Rover_project/Rover_project/tree.c
+CMakeFiles/untitled1.dir/tree.c.obj: CMakeFiles/untitled1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tonyv\OneDrive\Documents\GitHub\Rover_project\Rover_project\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/untitled1.dir/tree.c.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/untitled1.dir/tree.c.obj -MF CMakeFiles\untitled1.dir\tree.c.obj.d -o CMakeFiles\untitled1.dir\tree.c.obj -c C:\Users\tonyv\OneDrive\Documents\GitHub\Rover_project\Rover_project\tree.c
 
-CMakeFiles/untitled1.dir/functions.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/untitled1.dir/functions.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\tonyv\OneDrive\Documents\GitHub\Rover_project\Rover_project\functions.c > CMakeFiles\untitled1.dir\functions.c.i
+CMakeFiles/untitled1.dir/tree.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/untitled1.dir/tree.c.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\tonyv\OneDrive\Documents\GitHub\Rover_project\Rover_project\tree.c > CMakeFiles\untitled1.dir\tree.c.i
 
-CMakeFiles/untitled1.dir/functions.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/untitled1.dir/functions.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\tonyv\OneDrive\Documents\GitHub\Rover_project\Rover_project\functions.c -o CMakeFiles\untitled1.dir\functions.c.s
+CMakeFiles/untitled1.dir/tree.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/untitled1.dir/tree.c.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\tonyv\OneDrive\Documents\GitHub\Rover_project\Rover_project\tree.c -o CMakeFiles\untitled1.dir\tree.c.s
 
 # Object files for target untitled1
 untitled1_OBJECTS = \
@@ -174,7 +174,7 @@ untitled1_OBJECTS = \
 "CMakeFiles/untitled1.dir/map.c.obj" \
 "CMakeFiles/untitled1.dir/queue.c.obj" \
 "CMakeFiles/untitled1.dir/stack.c.obj" \
-"CMakeFiles/untitled1.dir/functions.c.obj"
+"CMakeFiles/untitled1.dir/tree.c.obj"
 
 # External object files for target untitled1
 untitled1_EXTERNAL_OBJECTS =
@@ -185,7 +185,7 @@ untitled1.exe: CMakeFiles/untitled1.dir/moves.c.obj
 untitled1.exe: CMakeFiles/untitled1.dir/map.c.obj
 untitled1.exe: CMakeFiles/untitled1.dir/queue.c.obj
 untitled1.exe: CMakeFiles/untitled1.dir/stack.c.obj
-untitled1.exe: CMakeFiles/untitled1.dir/functions.c.obj
+untitled1.exe: CMakeFiles/untitled1.dir/tree.c.obj
 untitled1.exe: CMakeFiles/untitled1.dir/build.make
 untitled1.exe: CMakeFiles/untitled1.dir/linkLibs.rsp
 untitled1.exe: CMakeFiles/untitled1.dir/objects1.rsp
