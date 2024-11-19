@@ -27,9 +27,8 @@ int main() {
     t_localisation position_rover;
     position_rover = loc_init(7, 6, NORTH);
     p_tree tree;
-    tree= Create_abr(4);
-    p_node node;
-    p_node= Create_node(5,2);
+    tree= Create_abr(5);
+    printf("val : %d\n",tree->root->value);
 
 
     return 0;
