@@ -20,11 +20,10 @@ p_node Create_node(int val, int nb_fils){
 
 
 }  //Crée un noeud
-void selection_move(int nb){    //tire aléatoirement un mouvement au sort
+char * selection_move(int nb){    //tire aléatoirement un mouvement au sort
     int result;
     t_move nb_move;
     char* nom_move;
-    srand(time(NULL));
     result=rand()%nb;
 
 
@@ -32,8 +31,19 @@ void selection_move(int nb){    //tire aléatoirement un mouvement au sort
     nb_move=result;
     nom_move= getMoveAsString(nb_move);
 
-    printf("move ==%s\n",nom_move);
-    return ;
+    return nom_move;
+}
 
+char ** list_move(int nb_move,int possibilité){
+    srand(time(NULL));
+
+    char ** move=(char**)malloc(sizeof(char*)*nb_move);
+    for (int i=0;i<nb_move;i++){
+        move[i]=selection_move(possibilité);
+        printf("%d\n",i);
+
+
+    }
+    return move;
 
 }

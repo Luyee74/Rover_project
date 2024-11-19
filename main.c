@@ -29,7 +29,12 @@ int main() {
     p_tree tree;
     tree= Create_abr(5);
     printf("val : %d\n",tree->root->value);
-    selection_move(8);
+    char **liste_moove;
+    liste_moove= list_move(5,6); // Liste des 5 mouvement tiré au hasard
+    printf("Liste de mouvement tire au hasard :\n");
+    for (int i = 0; i < 5; i++){
+        printf("%s\t|",liste_moove[i]);
+    }
 
     return 0;
 }

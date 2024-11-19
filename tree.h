@@ -30,5 +30,12 @@ typedef struct t_tree *p_tree;
 
 p_tree Create_abr(int );  // créé un arbre N-aire
 p_node Create_node(int , int);  //Crée un noeud
-void selection_move(int nb);
+char * selection_move(int nb); // selectionner un mouvement aleatoirement
+char ** list_move(int nb_move,int possibilité);
+
+
+
+
+
+
 #endif //UNTITLED1_TREE_H
