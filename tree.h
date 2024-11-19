@@ -1,6 +1,9 @@
 #ifndef UNTITLED1_TREE_H
 #define UNTITLED1_TREE_H
 #include <stdlib.h>
+#include <time.h>
+#include "moves.h"
+#include <stdio.h>
 typedef struct s_cell{
     int value; //valeur de la cellule
     int next; //adresse de la cellule suivante
@@ -27,5 +30,5 @@ typedef struct t_tree *p_tree;
 
 p_tree Create_abr(int );  // créé un arbre N-aire
 p_node Create_node(int , int);  //Crée un noeud
-
+void selection_move(int nb);
 #endif //UNTITLED1_TREE_H

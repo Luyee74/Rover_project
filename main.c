@@ -29,7 +29,7 @@ int main() {
     p_tree tree;
     tree= Create_abr(5);
     printf("val : %d\n",tree->root->value);
-
+    selection_move(8);
 
     return 0;
 }
