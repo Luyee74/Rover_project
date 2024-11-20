@@ -38,13 +38,11 @@ char * selection_move(int nb){    //tire aléatoirement un mouvement au sort
     return nom_move;
 }
 
-char ** list_move(int nb_move){
-    srand(time(NULL));
-    t_move * lst_move= getRandomMoves(nb_move);
-    char ** move=(char**)malloc(sizeof(char*)*nb_move);
-    for (int i=0;i<nb_move;i++){
+char ** list_move(t_move *lst_move,int N){
+
+    char ** move=(char**)malloc(sizeof(char*)*N);
+    for (int i=0;i<N;i++){
         move[i]= getMoveAsString(lst_move[i]);
-        printf("%d == %s |",i,move[i]);
 
 
     }
@@ -88,14 +86,46 @@ void find_path(p_node node, int *path, int path_length, int *minValue, int *minP
 */
 
 
+t_move * suppr(t_move * ind_move,int val,int nb_val){
+    t_move * new=(t_move*)malloc(sizeof(t_move)*nb_val);
+    ;
+    int j=0,ind;
+    for(int i=0;i<nb_val;i++){
+        ind=ind_move[i];
+        if (ind==val){
+            j=i;
+            break;
+        }
+        else{
+            new[i]=ind_move[i];
+        }
+    }
+
+    for(j;j<nb_val-1;j++){
+        new[j]=ind_move[j+1];
+    }return new;
+}
 
 
 
 
 
 
-void remplissage_arb(t_map map,p_tree tree,char ** list_move,int nb_rep,t_localisation localisation) {
-    p_node noeud =Create_node(map.costs[localisation.pos.y][localisation.pos.x],nb_rep);
+
+void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation) {
+    p_node noeud =Create_node(returne_val_pos(map,localisation),nb_rep);
+
+    if (ind_move[0]==NULL){
+
+    }
+
+    else {
+        for (int i=0;i<nb_rep;i++){
+        t_move * new_ind;
+        new_ind= suppr(ind_move,ind_move[i],nb_rep);
+
+
+    }}
 
 
 

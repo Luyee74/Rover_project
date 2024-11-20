@@ -23,16 +23,22 @@ int main() {
         }
         printf("\n");
     }
-    displayMap(map);
     t_localisation position_rover;
-    position_rover = loc_init(4, 6, NORTH);
+    position_rover = loc_init(5, 6, NORTH);
     p_tree tree;
-    char ** lst= list_move(9);
-    remplissage_arb(map, tree,list_move,5, position_rover) ;
+    t_move *ind_move= getRandomMoves(9);
+
+    char ** lst= list_move(ind_move,9);
+    for (int i=0;i<9;i++){
+        printf("%d |",ind_move[i]);
+    }
+    remplissage_arb(map, tree,ind_move,9, position_rover) ;
+
+    t_move *new= suppr( ind_move, ind_move[2], 9);
 
 
 
 
 
-    return 0;
+        return 0;
 }
