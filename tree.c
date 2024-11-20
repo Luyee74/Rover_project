@@ -51,3 +51,5 @@ char ** list_move(int nb_move){
     return move;
 
 }
+
+void remplissage_arb(char ** list_move,)

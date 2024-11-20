@@ -30,7 +30,7 @@ int main() {
     tree= Create_abr(5);
     printf("val : %d\n",tree->root->value);
 
-    char ** lst= list_move(5);
+    char ** lst= list_move(9);
 
 
     return 0;
