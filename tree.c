@@ -51,3 +51,19 @@ char ** list_move(int nb_move){
     return move;
 
 }
+
+p_node find_minimum(p_node node) {
+    if(node==NULL)
+        return NULL;
+    if (node->sons==0)
+        return node;
+    p_node minNode = NULL;
+    int minValue = 1000000;
+    for (int i=0 ; i<node->nb_sons ; i++){
+        p_node min_in_tree = find_minimum(node->sons[i]);
+        if (min_in_tree && min_in_tree->value < minValue) {
+            minValue = min_in_tree->value;
+            minNode =min_in_tree;
+        }
+    }
+}

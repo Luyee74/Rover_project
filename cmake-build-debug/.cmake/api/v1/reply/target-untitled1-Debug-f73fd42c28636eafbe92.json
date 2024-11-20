@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "untitled1.exe"
-		},
-		{
-			"path" : "untitled1.pdb"
+			"path" : "untitled1"
 		}
 	],
 	"backtrace" : 1,
@@ -38,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu11 -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu11 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -fcolor-diagnostics"
 				}
 			],
 			"language" : "C",
@@ -74,16 +71,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "C"
 	},
 	"name" : "untitled1",
-	"nameOnDisk" : "untitled1.exe",
+	"nameOnDisk" : "untitled1",
 	"paths" : 
 	{
 		"build" : ".",
