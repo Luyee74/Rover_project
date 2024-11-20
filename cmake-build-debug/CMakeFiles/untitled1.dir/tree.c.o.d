@@ -80,6 +80,7 @@ CMakeFiles/untitled1.dir/tree.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/sys/_types/_timespec.h \
   /Users/lucas/Documents/GitHub/Rover_project/moves.h \
   /Users/lucas/Documents/GitHub/Rover_project/loc.h \
+  /Users/lucas/Documents/GitHub/Rover_project/map.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/sys/_types/_va_list.h \

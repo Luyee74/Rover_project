@@ -183,3 +183,10 @@ t_move *getRandomMoves(int N)
     }
     return moves;
 }
+int returne_val_pos(t_map map,t_localisation localisation)
+{
+    int val =map.costs[localisation.pos.y][localisation.pos.x];
+    return val;
+
+
+}

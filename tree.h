@@ -4,6 +4,7 @@
 #include <time.h>
 #include "moves.h"
 #include <stdio.h>
+#include "map.h"
 typedef struct s_cell{
     int value; //valeur de la cellule
     int next; //adresse de la cellule suivante
@@ -32,6 +33,7 @@ p_tree Create_abr(int );  // créé un arbre N-aire
 p_node Create_node(int , int);  //Crée un noeud
 char * selection_move(int nb); // selectionner un mouvement aleatoirement
 char ** list_move(int nb_move);
+void remplissage_arb(t_map map,p_tree tree,char ** list_move,int nb_rep,t_localisation localisation);
 
 
 

@@ -25,12 +25,13 @@ int main() {
     }
     displayMap(map);
     t_localisation position_rover;
-    position_rover = loc_init(7, 6, NORTH);
+    position_rover = loc_init(4, 6, NORTH);
     p_tree tree;
-    tree= Create_abr(5);
-    printf("val : %d\n",tree->root->value);
-
     char ** lst= list_move(9);
+    remplissage_arb(map, tree,list_move,5, position_rover) ;
+
+
+
 
 
     return 0;

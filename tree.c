@@ -52,7 +52,7 @@ char ** list_move(int nb_move){
 
 }
 
-<<<<<<< HEAD
+
 p_node find_minimum(p_node node) {
     if(node==NULL)
         return NULL;
@@ -65,9 +65,43 @@ p_node find_minimum(p_node node) {
         if (min_in_tree && min_in_tree->value < minValue) {
             minValue = min_in_tree->value;
             minNode =min_in_tree;
+
         }
     }
+    return minNode;
 }
-=======
-void remplissage_arb(char ** list_move,)
->>>>>>> 76550be2b1e8e64b3aafffa37a457e051a82e961
+
+
+
+/*
+void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength){
+    if(node==NULL)
+        return NULL;
+    if (node->nb_sons == 0);
+        *minValue = node->value;
+    for (int i=0, i<path_lenght, i++){
+        minpath[i]=path[i]
+    }
+
+
+}
+*/
+
+
+
+
+
+
+
+
+void remplissage_arb(t_map map,p_tree tree,char ** list_move,int nb_rep,t_localisation localisation) {
+    p_node noeud =Create_node(map.costs[localisation.pos.y][localisation.pos.x],nb_rep);
+
+
+
+
+
+}
+
+
+

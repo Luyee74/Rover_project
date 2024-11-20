@@ -73,4 +73,5 @@ CMakeFiles/untitled1.dir/moves.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/sys/_types/_dev_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/sys/_types/_mode_t.h \
   /Users/lucas/Documents/GitHub/Rover_project/moves.h \
-  /Users/lucas/Documents/GitHub/Rover_project/loc.h
+  /Users/lucas/Documents/GitHub/Rover_project/loc.h \
+  /Users/lucas/Documents/GitHub/Rover_project/map.h

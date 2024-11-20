@@ -267,6 +267,7 @@ CMakeFiles/untitled1.dir/moves.c.o: /Users/lucas/Documents/GitHub/Rover_project/
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/sys/wait.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/16/include/stdint.h \
   /Users/lucas/Documents/GitHub/Rover_project/loc.h \
+  /Users/lucas/Documents/GitHub/Rover_project/map.h \
   /Users/lucas/Documents/GitHub/Rover_project/moves.h
 
 CMakeFiles/untitled1.dir/queue.c.o: /Users/lucas/Documents/GitHub/Rover_project/queue.c \
@@ -517,6 +518,7 @@ CMakeFiles/untitled1.dir/tree.c.o: /Users/lucas/Documents/GitHub/Rover_project/t
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/usr/include/time.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/16/include/stdint.h \
   /Users/lucas/Documents/GitHub/Rover_project/loc.h \
+  /Users/lucas/Documents/GitHub/Rover_project/map.h \
   /Users/lucas/Documents/GitHub/Rover_project/moves.h \
   /Users/lucas/Documents/GitHub/Rover_project/tree.h
 
