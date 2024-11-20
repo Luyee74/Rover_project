@@ -52,6 +52,7 @@ char ** list_move(int nb_move){
 
 }
 
+<<<<<<< HEAD
 p_node find_minimum(p_node node) {
     if(node==NULL)
         return NULL;
@@ -67,3 +68,6 @@ p_node find_minimum(p_node node) {
         }
     }
 }
+=======
+void remplissage_arb(char ** list_move,)
+>>>>>>> 76550be2b1e8e64b3aafffa37a457e051a82e961
