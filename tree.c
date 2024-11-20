@@ -38,13 +38,13 @@ char * selection_move(int nb){    //tire aléatoirement un mouvement au sort
     return nom_move;
 }
 
-char ** list_move(int nb_move,int possibilité){
+char ** list_move(int nb_move){
     srand(time(NULL));
-
+    t_move * lst_move= getRandomMoves(nb_move);
     char ** move=(char**)malloc(sizeof(char*)*nb_move);
     for (int i=0;i<nb_move;i++){
-        move[i]=selection_move(possibilité);
-        printf("%d\n",i);
+        move[i]= getMoveAsString(lst_move[i]);
+        printf("%d == %s |",i,move[i]);
 
 
     }
