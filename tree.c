@@ -1,4 +1,8 @@
 #include "tree.h"
+static struct proba {
+
+    int F_10;
+};
 
 p_tree Create_abr(int value){
     p_tree tree;
