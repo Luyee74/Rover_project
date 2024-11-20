@@ -33,7 +33,7 @@ p_tree Create_abr(int );  // créé un arbre N-aire
 p_node Create_node(int , int);  //Crée un noeud
 char * selection_move(int nb); // selectionner un mouvement aleatoirement
 char ** list_move(t_move *lst_move,int N);
-void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation);
+p_node remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation);
 t_move * suppr(t_move *,int val,int);
 
 

@@ -49,7 +49,7 @@ t_localisation move(t_localisation, t_move);
  * @param move : the move to do
  * @return none
  */
-void updateLocalisation(t_localisation *, t_move);
+t_localisation updateLocalisation(t_localisation , t_move);
 t_move *getRandomMoves(int N);
 int returne_val_pos(t_map m,t_localisation);
 #endif //UNTITLED1_MOVES_H

@@ -158,10 +158,10 @@ t_localisation move(t_localisation loc, t_move move)
     return new_loc;
 }
 
-void updateLocalisation(t_localisation *p_loc, t_move m)
+t_localisation updateLocalisation(t_localisation p_loc, t_move m)
 {
-    *p_loc = move(*p_loc, m);
-    return;
+    p_loc = move(p_loc, m);
+    return p_loc;
 }
 
 t_move *getRandomMoves(int N)

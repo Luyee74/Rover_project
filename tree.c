@@ -112,17 +112,21 @@ t_move * suppr(t_move * ind_move,int val,int nb_val){
 
 
 
-void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation) {
-    p_node noeud =Create_node(returne_val_pos(map,localisation),nb_rep);
+p_node remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation) {
+    p_node noeud =Create_node(returne_val_pos(map,localisation),nb_rep); // Créer un noeud avec la valeur de la pos actuel
 
-    if (ind_move[0]==NULL){
+    if (ind_move[0]==NULL){ // Si il n'a plus de mouvement
+        return noeud; // il renvoie la feuille sur laquelle il est allé
 
     }
 
     else {
-        for (int i=0;i<nb_rep;i++){
+        for (int i=0;i<nb_rep;i++){         //Pour chaque mouvement qu'il doit faire
+        t_localisation  pos_move;
         t_move * new_ind;
-        new_ind= suppr(ind_move,ind_move[i],nb_rep);
+        new_ind= suppr(ind_move,ind_move[i],nb_rep);     // on supprime le mouvement qu'il vient de faire
+        pos_move=updateLocalisation(localisation, ind_move[i]);      // on le fait avancé
+        root->sons[i]= remplissage_arb(map,noeud,new_ind,nb_rep-1,pos_move);  //on retourne récursivement les feuilles jusqu'à ce qu'il n'y ai plus de mouvement
 
 
     }}
