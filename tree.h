@@ -24,21 +24,21 @@ struct s_node{
 };
 typedef  struct s_node t_node, *p_node;
 
-struct t_tree{
+struct s_tree{
     p_node root;
 };
-typedef struct t_tree *p_tree;
+typedef struct s_tree t_tree, *p_tree;
 
 p_tree Create_abr();  // créé un arbre N-aire
 p_node Create_node(int , int);  //Crée un noeud
 char * selection_move(int nb); // selectionner un mouvement aleatoirement
 char ** list_move(t_move *lst_move,int N);
-p_node remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation);
+void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation);
 t_move * suppr(t_move *,int val,int);
 
 
 
-void printTree(p_node noeud, int depth) ;
+void affichage(p_node noeud);
 
 
 #endif //UNTITLED1_TREE_H

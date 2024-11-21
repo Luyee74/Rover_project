@@ -4,17 +4,20 @@ static struct proba {
     int F_10;
 };
 
-p_tree Create_abr(int value){
+p_tree Create_abr(int val, int fils){
     p_tree tree;
     p_node noeud;
-    tree= (p_tree*)malloc(sizeof(p_tree));
-    tree->root=(p_node)malloc(sizeof(p_node ));
+    tree= (p_tree)malloc(sizeof(t_tree));
+
+    tree->root=(p_node)malloc(sizeof(t_node ));
+    tree->root= Create_node(val,fils);
+
     return tree;
 }
 
 p_node Create_node(int val, int nb_fils){
     p_node noeud;
-    noeud=(p_node*)malloc(sizeof(p_node));
+    noeud=(p_node)malloc(sizeof(t_node));
     noeud->value=val;
     noeud->nb_sons=nb_fils;
     noeud->sons=(struct s_node**)malloc(sizeof(struct s_node**)*nb_fils);
@@ -85,7 +88,7 @@ void find_path(p_node node, int *path, int path_length, int *minValue, int *minP
 
 
 t_move * suppr(t_move * ind_move,int val,int nb_val){
-    t_move * new=(t_move*)malloc(sizeof(t_move)*nb_val);
+    t_move * new=(t_move*)malloc(sizeof(t_move)*(nb_val-1));
     ;
     int j=0,ind;
     for(int i=0;i<nb_val;i++){
@@ -110,45 +113,62 @@ t_move * suppr(t_move * ind_move,int val,int nb_val){
 
 
 
-p_node remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation) {
-    p_node noeud =Create_node(returne_val_pos(map,localisation),nb_rep); // Créer un noeud avec la valeur de la pos actuel
-    root=noeud;
-
-    if (nb_rep==0){ // Si il n'a plus de mouvement
+void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation) {
+    if (nb_rep==0){
         root->sons=NULL;
-        printf(" Val rep = %d",root->value);
-        return root; // il renvoie la feuille sur laquelle il est allé
+        return;
+    }
+
+else{
+    for(int i=0;i<nb_rep;i++){
+    t_move * new_list_move= suppr(ind_move,ind_move[i],nb_rep);
+    t_localisation after_move= move(localisation,ind_move[i]);
+
+
+        if (isValidLocalisation(after_move.pos,map.x_max,map.y_max)==1){
+            p_node neoud =Create_node(returne_val_pos(map,after_move),nb_rep-1);
+            root->sons[i]=neoud;
+        remplissage_arb(map,root->sons[i],new_list_move,nb_rep-1,after_move);
 
     }
 
-    else {
-        for (int i=0;i<nb_rep;i++){         //Pour chaque mouvement qu'il doit faire
-        t_localisation  pos_move;
-        t_move * new_ind;
-        new_ind= suppr(ind_move,ind_move[i],nb_rep);
-        pos_move=updateLocalisation(localisation, ind_move[i]);   // on le fait avancé
+    else{
+        root->sons[i]= Create_node(10000,1);
+        root->sons[i]->sons=NULL;
+    }
+}}
 
-            printf("mvt ==%s\t\n", getMoveAsString(ind_move[i]));
-        if (isValidLocalisation(pos_move.pos,map.x_max,map.y_max)==1){// on supprime le mouvement qu'il vient de faire
-
-            root->sons[i]= remplissage_arb(map,noeud,new_ind,nb_rep-1,pos_move);  //on retourne récursivement les feuilles jusqu'à ce qu'il n'y ai plus de mouvement
-            //printf("\t");
-
-    }else{
-            p_node obstacle= Create_node(10000,0);
-            obstacle->sons=NULL;
-
-
-            return root->sons[i]=obstacle;  //on retourne récursivement les feuilles jusqu'à ce qu'il n'y ai plus de mouvement
-
-
-
-        }
-        }}
 }
 
 
+void affichage(p_node noeud){
+    printf("\n");
+    if (noeud->sons==NULL){
+        printf("dernier noeud %d",noeud->value);
+        return;
+    }
+    else{
+        for(int i=0;i<noeud->nb_sons;i++) {
+            printf("| %d ", noeud->sons[i]->value);
+        }
+        for(int i=0;i<noeud->nb_sons;i++) {
 
+
+            affichage(noeud->sons[i]);}
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+}
 
 
 

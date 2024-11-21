@@ -25,20 +25,18 @@ int main() {
     }
     t_localisation position_rover;
     position_rover = loc_init(5, 6, NORTH);
-    p_tree tree=Create_abr();
-    t_move *ind_move= getRandomMoves(3);  // Tire au sort des mouvements
+    p_tree tree=Create_abr(returne_val_pos(map,position_rover),5);
+    t_move *ind_move= getRandomMoves(5);  // Tire au sort des mouvements
     char ** lst= list_move(ind_move,3);     // liste de ch de char contenant tout les mouvements
 
 
-    t_move test[]={0,4,5,1,6};
-
-
-    tree->root=remplissage_arb(map, tree->root,test,5, position_rover) ; // Fonction de remplissage d'arbre
-
-   //printf("racine val = %d",tree->root->value);
+    t_move * test=(t_move*)malloc(sizeof(t_move*)*5);
+    test[0]=0;test[1]=4;test[2]=5;test[3]=1;test[4]=6;
 
 
 
+    remplissage_arb(map, tree->root,ind_move,5, position_rover) ; // Fonction de remplissage d'arbre
+    affichage(tree->root);
 
         return 0;
 }
