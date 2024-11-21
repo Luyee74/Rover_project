@@ -8,9 +8,7 @@ p_tree Create_abr(int value){
     p_tree tree;
     p_node noeud;
     tree= (p_tree*)malloc(sizeof(p_tree));
-
-    noeud= Create_node(value,5);
-    tree->root=noeud;
+    tree->root=(p_node)malloc(sizeof(p_node ));
     return tree;
 }
 
@@ -114,9 +112,12 @@ t_move * suppr(t_move * ind_move,int val,int nb_val){
 
 p_node remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation) {
     p_node noeud =Create_node(returne_val_pos(map,localisation),nb_rep); // Créer un noeud avec la valeur de la pos actuel
+    root=noeud;
 
-    if (ind_move[0]==NULL){ // Si il n'a plus de mouvement
-        return noeud; // il renvoie la feuille sur laquelle il est allé
+    if (nb_rep==0){ // Si il n'a plus de mouvement
+        root->sons=NULL;
+        printf(" Val rep = %d",root->value);
+        return root; // il renvoie la feuille sur laquelle il est allé
 
     }
 
@@ -124,18 +125,31 @@ p_node remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_loca
         for (int i=0;i<nb_rep;i++){         //Pour chaque mouvement qu'il doit faire
         t_localisation  pos_move;
         t_move * new_ind;
-        new_ind= suppr(ind_move,ind_move[i],nb_rep);     // on supprime le mouvement qu'il vient de faire
-        pos_move=updateLocalisation(localisation, ind_move[i]);      // on le fait avancé
-        root->sons[i]= remplissage_arb(map,noeud,new_ind,nb_rep-1,pos_move);  //on retourne récursivement les feuilles jusqu'à ce qu'il n'y ai plus de mouvement
+        new_ind= suppr(ind_move,ind_move[i],nb_rep);
+        pos_move=updateLocalisation(localisation, ind_move[i]);   // on le fait avancé
+
+            printf("mvt ==%s\t\n", getMoveAsString(ind_move[i]));
+        if (isValidLocalisation(pos_move.pos,map.x_max,map.y_max)==1){// on supprime le mouvement qu'il vient de faire
+
+            root->sons[i]= remplissage_arb(map,noeud,new_ind,nb_rep-1,pos_move);  //on retourne récursivement les feuilles jusqu'à ce qu'il n'y ai plus de mouvement
+            //printf("\t");
+
+    }else{
+            p_node obstacle= Create_node(10000,0);
+            obstacle->sons=NULL;
 
 
-    }}
+            return root->sons[i]=obstacle;  //on retourne récursivement les feuilles jusqu'à ce qu'il n'y ai plus de mouvement
 
 
 
-
-
+        }
+        }}
 }
+
+
+
+
 
 
 

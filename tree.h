@@ -29,7 +29,7 @@ struct t_tree{
 };
 typedef struct t_tree *p_tree;
 
-p_tree Create_abr(int );  // créé un arbre N-aire
+p_tree Create_abr();  // créé un arbre N-aire
 p_node Create_node(int , int);  //Crée un noeud
 char * selection_move(int nb); // selectionner un mouvement aleatoirement
 char ** list_move(t_move *lst_move,int N);
@@ -38,6 +38,7 @@ t_move * suppr(t_move *,int val,int);
 
 
 
+void printTree(p_node noeud, int depth) ;
 
 
 #endif //UNTITLED1_TREE_H
