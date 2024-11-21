@@ -28,6 +28,17 @@ struct s_tree{
     p_node root;
 };
 typedef struct s_tree t_tree, *p_tree;
+typedef struct QueueNode {
+    p_node node;       // Le nœud de l'arbre
+    int level;         // Niveau du nœud dans l'arbre
+    struct QueueNode* next;
+} QueueNode;
+
+// Structure pour la file
+typedef struct Queue {
+    QueueNode* front;
+    QueueNode* rear;
+} Queue;
 
 p_tree Create_abr();  // créé un arbre N-aire
 p_node Create_node(int , int);  //Crée un noeud
@@ -37,8 +48,6 @@ void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_locali
 t_move * suppr(t_move *,int val,int);
 
 
-
-void affichage(p_node noeud);
 
 
 #endif //UNTITLED1_TREE_H

@@ -141,35 +141,5 @@ else{
 }
 
 
-void affichage(p_node noeud){
-    printf("\n");
-    if (noeud->sons==NULL){
-        printf("dernier noeud %d",noeud->value);
-        return;
-    }
-    else{
-        for(int i=0;i<noeud->nb_sons;i++) {
-            printf("| %d ", noeud->sons[i]->value);
-        }
-        for(int i=0;i<noeud->nb_sons;i++) {
-
-
-            affichage(noeud->sons[i]);}
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-}
-
-
 
 
