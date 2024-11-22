@@ -47,6 +47,7 @@ char ** list_move(t_move *lst_move,int N);
 void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation);
 t_move * suppr(t_move *,int val,int);
 
+p_tree ARBRE_POSIBILITE(t_map map,t_localisation position_rover,int);
 
 
 

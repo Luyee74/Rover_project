@@ -141,5 +141,21 @@ else{
 }
 
 
+p_tree ARBRE_POSIBILITE(t_map map,t_localisation position_rover,int nb_move){
 
+    position_rover = loc_init(5, 6, NORTH);
+    p_tree tree=Create_abr(returne_val_pos(map,position_rover),nb_move);
+
+    t_move *ind_move= getRandomMoves(nb_move);  // Tire au sort des mouvements
+    char ** lst= list_move(ind_move,3);     // liste de ch de char contenant tout les mouvements
+
+
+    t_move * test=(t_move*)malloc(sizeof(t_move*)*5);
+    test[0]=0;test[1]=4;test[2]=5;test[3]=1;test[4]=6;
+
+
+
+    remplissage_arb(map, tree->root,ind_move,nb_move, position_rover) ;
+    return tree;
+}
 
