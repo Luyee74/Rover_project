@@ -99,15 +99,7 @@ int main() {
 
 
 
-p_node temp=tree->root;
-int i=0;
-while (temp!=NULL){
-    printf("%d a %d fils\n",i,temp->nb_sons);
-    temp=temp->sons[0];
-    i++;
 
-
-}
         return 0;
 
 }

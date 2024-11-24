@@ -20,6 +20,7 @@ p_node Create_node(int val, int nb_fils){
     noeud->value=val;
     noeud->nb_sons=nb_fils;
     noeud->sons=(struct s_node**)malloc(sizeof(struct s_node**)*nb_fils);
+
     return noeud;
 
 
@@ -100,7 +101,7 @@ t_move * suppr(t_move * ind_move,int val,int nb_val){
 
 
 void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation) {
-    if (nb_rep==4){
+    if (nb_rep==0 || nb_rep==4){
         root->sons=NULL;
         return;
     }
