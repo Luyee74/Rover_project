@@ -73,21 +73,25 @@ p_node find_minimum(p_node node) {
 
 
 
-/*
-void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength){
-    if(node==NULL)
-        return NULL;
-    if (node->nb_sons == 0);
-        *minValue = node->value;
-    for (int i=0, i<path_lenght, i++){
-        minpath[i]=path[i]
+void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength) {
+    if (node == NULL)
+        return;
+    path[path_length] = node->value;
+    path_length++;
+    if (node->nb_sons == 0) {
+        if (node->value < *minValue) {
+            *minValue = node->value;
+            for (int i = 0; i < path_length; i++) {
+                minPath[i] = path[i];
+            }
+            *minPathLength = path_length;
+        }
+        return;
     }
-
-
+    for (int i = 0; i < node->nb_sons; i++) {
+        find_path(node->sons[i], path, path_length, minValue, minPath, minPathLength);
+    }
 }
-*/
-
-
 
 
 
