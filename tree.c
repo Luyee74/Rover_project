@@ -8,7 +8,6 @@ p_tree Create_abr(int val, int fils){
     p_tree tree;
     p_node noeud;
     tree= (p_tree)malloc(sizeof(t_tree));
-
     tree->root=(p_node)malloc(sizeof(t_node ));
     tree->root= Create_node(val,fils);
 

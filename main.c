@@ -2,38 +2,100 @@
 #include "map.h"
 #include "loc.h"
 #include "tree.h"
+#include "time.h"
+
+// Structure pour passer plusieurs arguments à find_path
+typedef struct {
+    p_node node;
+    int *path;
+    int path_length;
+    int *minValue;
+    int *minPath;
+    int *minPathLength;
+} find_path_args;
+
+// Wrapper pour find_minimum
+p_node wrapper_find_minimum(p_node node) {
+    return find_minimum(node);
+}
+
+// Wrapper pour find_path
+void wrapper_find_path(void *args) {
+    find_path_args *fp_args = (find_path_args *)args;
+    find_path(fp_args->node, fp_args->path, fp_args->path_length, fp_args->minValue, fp_args->minPath, fp_args->minPathLength);
+}
+
+// Fonction pour mesurer le temps d'exécution
+void measure_time(void (*func)(void *), void *arg) {
+    clock_t start, end;
+    double cpu_time_used;
+
+    start = clock();  // Début du chronométrage
+    func(arg);        // Appel de la fonction à tester
+    end = clock();    // Fin du chronométrage
+
+    // Calcul du temps en secondes
+    cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+    printf("Time taken: %f seconds\n", cpu_time_used);
+}
 
 int main() {
     t_map map = createMapFromFile("../maps/example1.map");
     printf("Map created with dimensions %d x %d\n", map.y_max, map.x_max);
-    for (int i = 0; i < map.y_max; i++)
-    {
-        for (int j = 0; j < map.x_max; j++)
-        {
+
+    // Affichage des sols de la carte
+    for (int i = 0; i < map.y_max; i++) {
+        for (int j = 0; j < map.x_max; j++) {
             printf("%d ", map.soils[i][j]);
         }
         printf("\n");
     }
-    // printf the costs, aligned left 5 digits
-    for (int i = 0; i < map.y_max; i++)
-    {
-        for (int j = 0; j < map.x_max; j++)
-        {
+
+    // Affichage des coûts
+    for (int i = 0; i < map.y_max; i++) {
+        for (int j = 0; j < map.x_max; j++) {
             printf("%-5d ", map.costs[i][j]);
         }
         printf("\n");
     }
- t_localisation position_rover =loc_init(5, 6, NORTH);
 
-    int nb_move=9;
-    t_move *ind_move= getRandomMoves(nb_move);  // Tire au sort des mouvements
-    char ** lst= list_move(ind_move,3);     // liste de ch de char contenant tout les mouvements
-int nb_mvt_analyser=9;
+    // Initialisation de la localisation du rover
+    t_localisation position_rover = loc_init(5, 6, NORTH);
 
-    p_tree tree= ARBRE_POSIBILITE(map,ind_move,position_rover,nb_mvt_analyser); // Remplissage de l'arbre
+    // Tirage aléatoire des mouvements
+    int nb_move = 9;
+    t_move *ind_move = getRandomMoves(nb_move);  // Tire au sort des mouvements
 
-for (int i=0; i<tree->root->nb_sons;i++){           //affiche les valeurs des premiers mouvement 
-    printf("%d ",tree->root->sons[i]->value);
-}
-        return 0;
+    // Création de l'arbre
+    p_tree tree = ARBRE_POSIBILITE(map, ind_move, position_rover, nb_move);
+
+    // Mesurer le temps pour find_minimum
+    printf("Starting measurement for find_minimum...\n");
+    measure_time((void(*)(void*)) wrapper_find_minimum, tree->root);
+
+    // Initialisation des variables pour find_path
+    int path[100], minValue = 1000000, minPath[100], minPathLength = 0;
+    find_path_args fp_args = {
+            tree->root,
+            path,
+            0,
+            &minValue,
+            minPath,
+            &minPathLength
+    };
+
+    // Mesurer le temps pour find_path
+    printf("Starting measurement for find_path...\n");
+    measure_time(wrapper_find_path, &fp_args);
+
+    // Afficher les résultats de find_path
+    printf("Minimum value found: %d\n", minValue);
+    printf("Minimum path length: %d\n", minPathLength);
+    printf("Minimum path: ");
+    for (int i = 0; i < minPathLength; i++) {
+        printf("%d ", minPath[i]);
+    }
+    printf("\n");
+
+    return 0;
 }
