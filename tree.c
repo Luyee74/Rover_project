@@ -128,13 +128,12 @@ void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_locali
 }
 
 
-p_tree ARBRE_POSIBILITE(t_map map,t_localisation position_rover,int nb_move){
+p_tree ARBRE_POSIBILITE(t_map map,t_move *ind_move,t_localisation position_rover,int nb_move){
 
     position_rover = loc_init(5, 6, NORTH);
     p_tree tree=Create_abr(returne_val_pos(map,position_rover),nb_move);
 
-    t_move *ind_move= getRandomMoves(nb_move);  // Tire au sort des mouvements
-    char ** lst= list_move(ind_move,3);     // liste de ch de char contenant tout les mouvements
+
 
 
     t_move * test=(t_move*)malloc(sizeof(t_move*)*5);

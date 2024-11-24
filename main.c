@@ -25,9 +25,12 @@ int main() {
     }
  t_localisation position_rover =loc_init(5, 6, NORTH);
 
+    int nb_move=9;
+    t_move *ind_move= getRandomMoves(nb_move);  // Tire au sort des mouvements
+    char ** lst= list_move(ind_move,3);     // liste de ch de char contenant tout les mouvements
 int nb_mvt_analyser=9;
 
-    p_tree tree= ARBRE_POSIBILITE(map,position_rover,nb_mvt_analyser); // Remplissage de l'arbre
+    p_tree tree= ARBRE_POSIBILITE(map,ind_move,position_rover,nb_mvt_analyser); // Remplissage de l'arbre
 
 for (int i=0; i<tree->root->nb_sons;i++){           //affiche les valeurs des premiers mouvement 
     printf("%d ",tree->root->sons[i]->value);
