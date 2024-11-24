@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 #include "moves.h"
+#include <time.h>
 
 /* prototypes of local functions */
 /* local functions are used only in this file, as helper functions */
@@ -157,14 +158,14 @@ t_localisation move(t_localisation loc, t_move move)
     return new_loc;
 }
 
-void updateLocalisation(t_localisation *p_loc, t_move m)
+t_localisation updateLocalisation(t_localisation p_loc, t_move m)
 {
-    *p_loc = move(*p_loc, m);
-    return;
+    p_loc = move(p_loc, m);
+    return p_loc;
 }
 
 t_move *getRandomMoves(int N)
-{
+{   srand(time(NULL));
     int nbmoves[]={22,15,7,7,21,21,7};
     int total_moves=100;
     t_move *moves = (t_move *)malloc(N * sizeof(t_move));

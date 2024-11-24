@@ -23,16 +23,14 @@ int main() {
         }
         printf("\n");
     }
-    displayMap(map);
-    t_localisation position_rover;
-    position_rover = loc_init(4, 6, NORTH);
-    p_tree tree;
-    char ** lst= list_move(9);
-    remplissage_arb(map, tree,list_move,5, position_rover) ;
+ t_localisation position_rover =loc_init(5, 6, NORTH);
 
+int nb_mvt_analyser=9;
 
+    p_tree tree= ARBRE_POSIBILITE(map,position_rover,nb_mvt_analyser); // Remplissage de l'arbre
 
-
-
-    return 0;
+for (int i=0; i<tree->root->nb_sons;i++){           //affiche les valeurs des premiers mouvement 
+    printf("%d ",tree->root->sons[i]->value);
+}
+        return 0;
 }
