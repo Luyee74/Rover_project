@@ -4,19 +4,20 @@ static struct proba {
     int F_10;
 };
 
-p_tree Create_abr(int value){
+p_tree Create_abr(int val, int fils){
     p_tree tree;
     p_node noeud;
-    tree= (p_tree*)malloc(sizeof(p_tree));
+    tree= (p_tree)malloc(sizeof(t_tree));
 
-    noeud= Create_node(value,5);
-    tree->root=noeud;
+    tree->root=(p_node)malloc(sizeof(t_node ));
+    tree->root= Create_node(val,fils);
+
     return tree;
 }
 
 p_node Create_node(int val, int nb_fils){
     p_node noeud;
-    noeud=(p_node*)malloc(sizeof(p_node));
+    noeud=(p_node)malloc(sizeof(t_node));
     noeud->value=val;
     noeud->nb_sons=nb_fils;
     noeud->sons=(struct s_node**)malloc(sizeof(struct s_node**)*nb_fils);
@@ -38,13 +39,11 @@ char * selection_move(int nb){    //tire aléatoirement un mouvement au sort
     return nom_move;
 }
 
-char ** list_move(int nb_move){
-    srand(time(NULL));
-    t_move * lst_move= getRandomMoves(nb_move);
-    char ** move=(char**)malloc(sizeof(char*)*nb_move);
-    for (int i=0;i<nb_move;i++){
+char ** list_move(t_move *lst_move,int N){
+
+    char ** move=(char**)malloc(sizeof(char*)*N);
+    for (int i=0;i<N;i++){
         move[i]= getMoveAsString(lst_move[i]);
-        printf("%d == %s |",i,move[i]);
 
 
     }
@@ -65,31 +64,15 @@ p_node find_minimum(p_node node) {
         if (min_in_tree && min_in_tree->value < minValue) {
             minValue = min_in_tree->value;
             minNode =min_in_tree;
+
         }
     }
     return minNode;
 }
 
 
-void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength) {
-    if (node == NULL)
-        return;
-    path[path_length] = node->value;
-    path_length++;
-    if (node->nb_sons == 0) {
-        if (node->value < *minValue) {
-            *minValue = node->value;
-            for (int i = 0; i < path_length; i++) {
-                minPath[i] = path[i];
-            }
-            *minPathLength = path_length;
-        }
-        return;
-    }
-    for (int i = 0; i < node->nb_sons; i++) {
-        find_path(node->sons[i], path, path_length, minValue, minPath, minPathLength);
-    }
-}
+
+
 
 t_move * suppr(t_move * ind_move,int val,int nb_val){
     t_move * new=(t_move*)malloc(sizeof(t_move)*(nb_val-1));
@@ -110,6 +93,10 @@ t_move * suppr(t_move * ind_move,int val,int nb_val){
         new[j]=ind_move[j+1];
     }return new;
 }
+
+
+
+
 
 
 
@@ -159,4 +146,24 @@ p_tree ARBRE_POSIBILITE(t_map map,t_localisation position_rover,int nb_move){
     return tree;
 }
 
+void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength) {
+    if (node == NULL)
+        return;
+    path[path_length] = node->value;
+    path_length++;
+    if (node->nb_sons == 0) {
+        if (node->value < *minValue) {
+            *minValue = node->value;
+            for (int i = 0; i < path_length; i++) {
+                minPath[i] = path[i];
+            }
+            *minPathLength = path_length;
+        }
+        return;
+    }
+    for (int i = 0; i < node->nb_sons; i++) {
+        find_path(node->sons[i], path, path_length, minValue, minPath, minPathLength);
+    }
 
+
+}

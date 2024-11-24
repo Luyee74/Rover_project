@@ -24,21 +24,32 @@ struct s_node{
 };
 typedef  struct s_node t_node, *p_node;
 
-struct t_tree{
+struct s_tree{
     p_node root;
 };
-typedef struct t_tree *p_tree;
+typedef struct s_tree t_tree, *p_tree;
+typedef struct QueueNode {
+    p_node node;       // Le nœud de l'arbre
+    int level;         // Niveau du nœud dans l'arbre
+    struct QueueNode* next;
+} QueueNode;
 
-p_tree Create_abr(int );  // créé un arbre N-aire
+// Structure pour la file
+typedef struct Queue {
+    QueueNode* front;
+    QueueNode* rear;
+} Queue;
+
+p_tree Create_abr();  // créé un arbre N-aire
 p_node Create_node(int , int);  //Crée un noeud
 char * selection_move(int nb); // selectionner un mouvement aleatoirement
-char ** list_move(int nb_move);
-void remplissage_arb(t_map map,p_tree tree,char ** list_move,int nb_rep,t_localisation localisation);
+char ** list_move(t_move *lst_move,int N);
+void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation);
+t_move * suppr(t_move *,int val,int);
+
+p_tree ARBRE_POSIBILITE(t_map map,t_localisation position_rover,int);
+
 p_node find_minimum(p_node node);
 void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength);
 
-
-
-
-
-#endif //UNTITLED1_TREE_H
+#endif
