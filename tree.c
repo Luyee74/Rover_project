@@ -65,12 +65,10 @@ p_node find_minimum(p_node node) {
         if (min_in_tree && min_in_tree->value < minValue) {
             minValue = min_in_tree->value;
             minNode =min_in_tree;
-
         }
     }
     return minNode;
 }
-
 
 
 void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength) {
@@ -93,19 +91,72 @@ void find_path(p_node node, int *path, int path_length, int *minValue, int *minP
     }
 }
 
+t_move * suppr(t_move * ind_move,int val,int nb_val){
+    t_move * new=(t_move*)malloc(sizeof(t_move)*(nb_val-1));
+    ;
+    int j=0,ind;
+    for(int i=0;i<nb_val;i++){
+        ind=ind_move[i];
+        if (ind==val){
+            j=i;
+            break;
+        }
+        else{
+            new[i]=ind_move[i];
+        }
+    }
+
+    for(j;j<nb_val-1;j++){
+        new[j]=ind_move[j+1];
+    }return new;
+}
 
 
 
+void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation) {
+    if (nb_rep==0){
+        root->sons=NULL;
+        return;
+    }
+
+    else{
+        for(int i=0;i<nb_rep;i++){
+            t_move * new_list_move= suppr(ind_move,ind_move[i],nb_rep);
+            t_localisation after_move= move(localisation,ind_move[i]);
 
 
-void remplissage_arb(t_map map,p_tree tree,char ** list_move,int nb_rep,t_localisation localisation) {
-    p_node noeud =Create_node(map.costs[localisation.pos.y][localisation.pos.x],nb_rep);
+            if (isValidLocalisation(after_move.pos,map.x_max,map.y_max)==1){
+                p_node neoud =Create_node(returne_val_pos(map,after_move),nb_rep-1);
+                root->sons[i]=neoud;
+                remplissage_arb(map,root->sons[i],new_list_move,nb_rep-1,after_move);
 
+            }
 
-
-
+            else{
+                root->sons[i]= Create_node(10000,1);
+                root->sons[i]->sons=NULL;
+            }
+        }}
 
 }
 
+
+p_tree ARBRE_POSIBILITE(t_map map,t_localisation position_rover,int nb_move){
+
+    position_rover = loc_init(5, 6, NORTH);
+    p_tree tree=Create_abr(returne_val_pos(map,position_rover),nb_move);
+
+    t_move *ind_move= getRandomMoves(nb_move);  // Tire au sort des mouvements
+    char ** lst= list_move(ind_move,3);     // liste de ch de char contenant tout les mouvements
+
+
+    t_move * test=(t_move*)malloc(sizeof(t_move*)*5);
+    test[0]=0;test[1]=4;test[2]=5;test[3]=1;test[4]=6;
+
+
+
+    remplissage_arb(map, tree->root,ind_move,nb_move, position_rover) ;
+    return tree;
+}
 
 

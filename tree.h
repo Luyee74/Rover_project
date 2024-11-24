@@ -35,6 +35,7 @@ char * selection_move(int nb); // selectionner un mouvement aleatoirement
 char ** list_move(int nb_move);
 void remplissage_arb(t_map map,p_tree tree,char ** list_move,int nb_rep,t_localisation localisation);
 p_node find_minimum(p_node node);
+void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength);
 
 
 
