@@ -66,6 +66,7 @@ int main() {
     int nb_move = 9;
     t_move *ind_move = getRandomMoves(nb_move);  // Tire au sort des mouvements
 
+<<<<<<< Updated upstream
     // Création de l'arbre
     p_tree tree = ARBRE_POSIBILITE(map, ind_move, position_rover, nb_move);
 
@@ -98,4 +99,16 @@ int main() {
     printf("\n");
 
     return 0;
+=======
+p_node temp=tree->root;
+int i=0;
+while (temp!=NULL){
+    printf("%d a %d fils\n",i,temp->nb_sons);
+    temp=temp->sons[0];
+    i++;
+
+
+}
+        return 0;
+>>>>>>> Stashed changes
 }

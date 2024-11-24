@@ -100,7 +100,7 @@ t_move * suppr(t_move * ind_move,int val,int nb_val){
 
 
 void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation) {
-    if (nb_rep==0){
+    if (nb_rep==4){
         root->sons=NULL;
         return;
     }
@@ -112,14 +112,24 @@ void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_locali
 
 
             if (isValidLocalisation(after_move.pos,map.x_max,map.y_max)==1){
-                p_node neoud =Create_node(returne_val_pos(map,after_move),nb_rep-1);
-                root->sons[i]=neoud;
+                p_node noeud;
+
+                if (nb_rep==5){
+                noeud = Create_node(returne_val_pos(map,after_move),0);}
+                else {      noeud = Create_node(returne_val_pos(map,after_move),nb_rep-1);
+
+
+                    }
+                root->sons[i]=noeud;
                 remplissage_arb(map,root->sons[i],new_list_move,nb_rep-1,after_move);
 
             }
 
+
+
+
             else{
-                root->sons[i]= Create_node(10000,1);
+                root->sons[i]= Create_node(10000,0);
                 root->sons[i]->sons=NULL;
             }
         }}
