@@ -156,25 +156,25 @@ p_tree ARBRE_POSIBILITE(t_map map,t_move *ind_move,t_localisation position_rover
     return tree;
 }
 
-void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength,char ** mvt_fait) {
+void find_path(p_node node, struct s_node **path, int path_length, int  *minValue, struct s_node **minPath, int *minPathLength,char ** mvt_fait,char **min_mvt) {
 
     if (node == NULL)
         return;
-    path[path_length] = node->value;
-
+    path[path_length] = node;
     path_length++;
     if (node->nb_sons == 0) {
         if (node->value < *minValue) {
             *minValue = node->value;
             for (int i = 0; i < path_length; i++) {
                 minPath[i] = path[i];
+
             }
             *minPathLength = path_length;
         }
         return;
     }
     for (int i = 0; i < node->nb_sons; i++) {
-        find_path(node->sons[i], path, path_length, minValue, minPath, minPathLength,mvt_fait);
+        find_path(node->sons[i], path, path_length, minValue, minPath, minPathLength,mvt_fait,min_mvt);
     }
 
 

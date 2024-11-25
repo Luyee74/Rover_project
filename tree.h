@@ -51,6 +51,6 @@ t_move * suppr(t_move *,int val,int);
 p_tree ARBRE_POSIBILITE(t_map map,t_move *ind_move,t_localisation position_rover,int nb_move);
 
 p_node find_minimum(p_node node);
-void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength,char **);
+void find_path(p_node node, p_node *path, int path_length, int *minValue, p_node *minPath, int *minPathLength,char **,char **);
 
 #endif

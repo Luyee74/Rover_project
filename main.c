@@ -7,11 +7,14 @@
 // Structure pour passer plusieurs arguments à find_path
 typedef struct {
     p_node node;
-    int *path;
+    struct s_node **path;
     int path_length;
     int *minValue;
-    int *minPath;
+    struct s_node**minPath;
     int *minPathLength;
+    char *mvt[30];
+    char *min_mvt[30];
+
 } find_path_args;
 
 // Wrapper pour find_minimum
@@ -22,7 +25,7 @@ p_node wrapper_find_minimum(p_node node) {
 // Wrapper pour find_path
 void wrapper_find_path(void *args) {
     find_path_args *fp_args = (find_path_args *)args;
-    find_path(fp_args->node, fp_args->path, fp_args->path_length, fp_args->minValue, fp_args->minPath, fp_args->minPathLength);
+    find_path(fp_args->node, fp_args->path, fp_args->path_length, fp_args->minValue, fp_args->minPath, fp_args->minPathLength,fp_args->mvt,fp_args->min_mvt);
 }
 
 // Fonction pour mesurer le temps d'exécution
@@ -68,32 +71,37 @@ int main() {
 
     // Création de l'arbre
     p_tree tree = ARBRE_POSIBILITE(map, ind_move, position_rover, nb_move);
-
+    printf("localisation %d\n",position_rover.pos.x);
     // Mesurer le temps pour find_minimum
     printf("Starting measurement for find_minimum...\n");
     measure_time((void(*)(void*)) wrapper_find_minimum, tree->root);
 
     // Initialisation des variables pour find_path
-    int path[100], minValue = 1000000, minPath[100], minPathLength = 0;
+    int  minValue = 1000000, minPathLength = 0;
+   struct s_node **path=(struct s_node**)malloc(sizeof(struct s_node**)*5),** minPath=(struct s_node**)malloc(sizeof(struct s_node**)*5);
+
+    char *mvt_fait[30]; char *min_mvt[30];
     find_path_args fp_args = {
             tree->root,
             path,
             0,
             &minValue,
             minPath,
-            &minPathLength
+            &minPathLength,
+            mvt_fait,
+            min_mvt
     };
 
     // Mesurer le temps pour find_path
     printf("Starting measurement for find_path...\n");
     measure_time(wrapper_find_path, &fp_args);
-
     // Afficher les résultats de find_path
     printf("Minimum value found: %d\n", minValue);
     printf("Minimum path length: %d\n", minPathLength);
     printf("Minimum path: ");
-    for (int i = 0; i < minPathLength; i++) {
-        printf("%d ", minPath[i]);
+    for (int i = 1; i < minPathLength; i++) {
+        printf("%s ", getMoveAsString(minPath[i]->mvt));
+        printf("%d ",minPath[i]->value);
     }
     printf("\n");
 
