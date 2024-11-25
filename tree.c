@@ -9,17 +9,18 @@ p_tree Create_abr(int val, int fils){
     p_node noeud;
     tree= (p_tree)malloc(sizeof(t_tree));
     tree->root=(p_node)malloc(sizeof(t_node ));
-    tree->root= Create_node(val,fils);
+    tree->root= Create_node(val,fils,-1);
 
     return tree;
 }
 
-p_node Create_node(int val, int nb_fils){
+p_node Create_node(int val, int nb_fils,int mvt){
     p_node noeud;
     noeud=(p_node)malloc(sizeof(t_node));
     noeud->value=val;
     noeud->nb_sons=nb_fils;
     noeud->sons=(struct s_node**)malloc(sizeof(struct s_node**)*nb_fils);
+    noeud->mvt=mvt;
 
     return noeud;
 
@@ -116,8 +117,8 @@ void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_locali
                 p_node noeud;
 
                 if (nb_rep==5){
-                noeud = Create_node(returne_val_pos(map,after_move),0);}
-                else {      noeud = Create_node(returne_val_pos(map,after_move),nb_rep-1);
+                noeud = Create_node(returne_val_pos(map,after_move),0,ind_move[i]);}
+                else {      noeud = Create_node(returne_val_pos(map,after_move),nb_rep-1,ind_move[i]);
 
 
                     }
@@ -130,7 +131,7 @@ void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_locali
 
 
             else{
-                root->sons[i]= Create_node(10000,0);
+                root->sons[i]= Create_node(10000,0,ind_move[i]);
                 root->sons[i]->sons=NULL;
             }
         }}
@@ -155,10 +156,12 @@ p_tree ARBRE_POSIBILITE(t_map map,t_move *ind_move,t_localisation position_rover
     return tree;
 }
 
-void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength) {
+void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength,char ** mvt_fait) {
+
     if (node == NULL)
         return;
     path[path_length] = node->value;
+
     path_length++;
     if (node->nb_sons == 0) {
         if (node->value < *minValue) {
@@ -171,7 +174,7 @@ void find_path(p_node node, int *path, int path_length, int *minValue, int *minP
         return;
     }
     for (int i = 0; i < node->nb_sons; i++) {
-        find_path(node->sons[i], path, path_length, minValue, minPath, minPathLength);
+        find_path(node->sons[i], path, path_length, minValue, minPath, minPathLength,mvt_fait);
     }
 
 

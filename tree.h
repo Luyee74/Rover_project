@@ -21,6 +21,7 @@ struct s_node{
     int value; //valeur de la feuille
     int nb_sons; //nombre de fils (5 car 5 déplacements)
     struct s_node **sons; //adresses des fils
+    int mvt ;
 };
 typedef  struct s_node t_node, *p_node;
 
@@ -41,7 +42,7 @@ typedef struct Queue {
 } Queue;
 
 p_tree Create_abr();  // créé un arbre N-aire
-p_node Create_node(int , int);  //Crée un noeud
+p_node Create_node(int , int,int);  //Crée un noeud
 char * selection_move(int nb); // selectionner un mouvement aleatoirement
 char ** list_move(t_move *lst_move,int N);
 void remplissage_arb(t_map map,p_node root,t_move * ind_move,int nb_rep,t_localisation localisation);
@@ -50,6 +51,6 @@ t_move * suppr(t_move *,int val,int);
 p_tree ARBRE_POSIBILITE(t_map map,t_move *ind_move,t_localisation position_rover,int nb_move);
 
 p_node find_minimum(p_node node);
-void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength);
+void find_path(p_node node, int *path, int path_length, int *minValue, int *minPath, int *minPathLength,char **);
 
 #endif
