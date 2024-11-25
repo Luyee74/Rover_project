@@ -67,7 +67,13 @@ int main() {
     t_move *ind_move = getRandomMoves(nb_move);  // Tire au sort des mouvements
 
     // Création de l'arbre
+    printf("Starting measurement for create_tree...\n");
+    double time_spent = 0.0;
+    clock_t begin = clock();
     p_tree tree = ARBRE_POSIBILITE(map, ind_move, position_rover, nb_move);
+    clock_t end = clock();
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\nTime taken: %f seconds\n", time_spent);
 
     // Mesurer le temps pour find_minimum
     printf("Starting measurement for find_minimum...\n");
