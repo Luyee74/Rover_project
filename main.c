@@ -7,11 +7,13 @@
 // Structure pour passer plusieurs arguments à find_path
 typedef struct {
     p_node node;
-    int *path;
+    struct s_node **path;
     int path_length;
     int *minValue;
-    int *minPath;
+    struct s_node**minPath;
     int *minPathLength;
+
+
 } find_path_args;
 
 // Wrapper pour find_minimum
@@ -40,70 +42,8 @@ void measure_time(void (*func)(void *), void *arg) {
 }
 
 int main() {
-    t_map map = createMapFromFile("../maps/example1.map");
-    printf("Map created with dimensions %d x %d\n", map.y_max, map.x_max);
 
-    // Affichage des sols de la carte
-    for (int i = 0; i < map.y_max; i++) {
-        for (int j = 0; j < map.x_max; j++) {
-            printf("%d ", map.soils[i][j]);
-        }
-        printf("\n");
-    }
-
-    // Affichage des coûts
-    for (int i = 0; i < map.y_max; i++) {
-        for (int j = 0; j < map.x_max; j++) {
-            printf("%-5d ", map.costs[i][j]);
-        }
-        printf("\n");
-    }
-
-    // Initialisation de la localisation du rover
-    t_localisation position_rover = loc_init(5, 6, NORTH);
-
-    // Tirage aléatoire des mouvements
-    int nb_move = 9;
-    t_move *ind_move = getRandomMoves(nb_move);  // Tire au sort des mouvements
-
-    // Création de l'arbre
-    printf("Starting measurement for create_tree...\n");
-    double time_spent = 0.0;
-    clock_t begin = clock();
-    p_tree tree = ARBRE_POSIBILITE(map, ind_move, position_rover, nb_move);
-    clock_t end = clock();
-    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("\nTime taken: %f seconds\n", time_spent);
-
-    // Mesurer le temps pour find_minimum
-    printf("Starting measurement for find_minimum...\n");
-    measure_time((void(*)(void*)) wrapper_find_minimum, tree->root);
-
-    // Initialisation des variables pour find_path
-    int path[100], minValue = 1000000, minPath[100], minPathLength = 0;
-    find_path_args fp_args = {
-            tree->root,
-            path,
-            0,
-            &minValue,
-            minPath,
-            &minPathLength
-    };
-
-    // Mesurer le temps pour find_path
-    printf("Starting measurement for find_path...\n");
-    measure_time(wrapper_find_path, &fp_args);
-
-    // Afficher les résultats de find_path
-    printf("Minimum value found: %d\n", minValue);
-    printf("Minimum path length: %d\n", minPathLength);
-    printf("Minimum path: ");
-    for (int i = 0; i < minPathLength; i++) {
-        printf("%d ", minPath[i]);
-    }
-    printf("\n");
-
-
+    robot_vers_base();
 
 
         return 0;
