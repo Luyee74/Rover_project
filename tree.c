@@ -14,7 +14,7 @@ p_tree Create_abr(int val, int fils){
     return tree;
 }
 
-p_node Create_node(int val, int nb_fils,int mvt){
+p_node Create_node(int val, int nb_fils,t_move mvt){
     p_node noeud;
     noeud=(p_node)malloc(sizeof(t_node));
     noeud->value=val;
@@ -156,7 +156,7 @@ p_tree ARBRE_POSIBILITE(t_map map,t_move *ind_move,t_localisation position_rover
     return tree;
 }
 
-void find_path(p_node node, struct s_node **path, int path_length, int  *minValue, struct s_node **minPath, int *minPathLength,char ** mvt_fait,char **min_mvt) {
+void find_path(p_node node, struct s_node **path, int path_length, int  *minValue, struct s_node **minPath, int *minPathLength) {
 
     if (node == NULL)
         return;
@@ -174,8 +174,78 @@ void find_path(p_node node, struct s_node **path, int path_length, int  *minValu
         return;
     }
     for (int i = 0; i < node->nb_sons; i++) {
-        find_path(node->sons[i], path, path_length, minValue, minPath, minPathLength,mvt_fait,min_mvt);
+        find_path(node->sons[i], path, path_length, minValue, minPath, minPathLength);
     }
 
+
+}
+
+void  robot_avance(p_node* minPath,t_localisation *position_rover,int nb_move){
+    for (int i=1;i<nb_move+1;i++) {
+        char *lst_move[nb_move];
+        lst_move[i]= getMoveAsString(minPath[i]->mvt);
+        *position_rover=updateLocalisation(*position_rover, minPath[i]->mvt);
+
+    }
+
+
+
+}
+
+void robot_vers_base(){
+
+
+    t_map map = createMapFromFile("../maps/example1.map");
+    printf("Map created with dimensions %d x %d\n", map.y_max, map.x_max);
+
+    // Affichage des sols de la carte
+    for (int i = 0; i < map.y_max; i++) {
+        for (int j = 0; j < map.x_max; j++) {
+            printf("%d ", map.soils[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Affichage des coûts
+    for (int i = 0; i < map.y_max; i++) {
+        for (int j = 0; j < map.x_max; j++) {
+            printf("%-5d ", map.costs[i][j]);
+        }
+        printf("\n");
+    }
+    int val;
+    do {
+    t_localisation position_rover = loc_init(5, 6, NORTH);
+    int nb_move = 9;
+        for (int i=0;i<5;i++){
+        // Initialisation de la localisation du rover
+
+        // Tirage aléatoire des mouvements
+
+        t_move *ind_move = getRandomMoves(nb_move);  // Tire au sort des mouvements
+
+        // Création de l'arbre
+        p_tree tree = ARBRE_POSIBILITE(map, ind_move, position_rover, nb_move);
+        int minValue = 1000000, minPathLength = 0;
+        struct s_node **path = (struct s_node **) malloc(sizeof(struct s_node **) * 5), **minPath = (struct s_node **) malloc(sizeof(struct s_node **) * 5);
+
+        find_path(tree->root,path,0,&minValue,minPath,&minPathLength);
+        printf("Liste de mouvement minimum a partir de la position %d %d\n",position_rover.pos.x,position_rover.pos.y);
+        for (int j=1;j<6;j++){
+            printf("Le mouvement %s to a %d \n",getMoveAsString(minPath[j]->mvt),minPath[j]->value);
+
+        }
+        robot_avance(minPath, &position_rover, 5);
+
+    }
+        if(returne_val_pos(map,position_rover)==0){
+            printf("Rover est arrive a la base\n");
+            val=0;
+        }
+        else{
+            printf("Rover n'a pas reussi a rentrer a la base\n");
+            printf("Entrer le nombre 1 pour reessayer\n");
+            val= scanf("%d",&val);
+        }}while(val==1);
 
 }
