@@ -215,16 +215,16 @@ void robot_vers_base(){
     }
     int val;
     do {
-    t_localisation position_rover = loc_init(5, 6, NORTH);
-    int nb_move = 9;
+    t_localisation position_rover = loc_init(5, 6, NORTH);        // Initialisation de la localisation du rover
+
+        int nb_move = 9;
         for (int i=0;i<5;i++){
-        // Initialisation de la localisation du rover
 
-        // Tirage aléatoire des mouvements
 
-        t_move *ind_move = getRandomMoves(nb_move);  // Tire au sort des mouvements
+        t_move *ind_move = getRandomMoves(nb_move);         // Tirage aléatoire des mouvements
 
-        // Création de l'arbre
+
+            // Création de l'arbre
         p_tree tree = ARBRE_POSIBILITE(map, ind_move, position_rover, nb_move);
         int minValue = 1000000, minPathLength = 0;
         struct s_node **path = (struct s_node **) malloc(sizeof(struct s_node **) * 5), **minPath = (struct s_node **) malloc(sizeof(struct s_node **) * 5);
